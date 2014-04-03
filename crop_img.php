@@ -25,6 +25,12 @@ if ( !file_exists($src_file_path ) ) {
 $ext        = end(explode(".",$src_file_path));
 $src_file_basename  = basename($src_file_path, '.'.$ext);
 $function   = returnCorrectFunction($ext);
+
+if ( ! function_exists($function) ) {
+// todo use output_json_error();
+    exit('function '. $function. ' not exists!');
+}
+
 $image      = $function($src_file_path);
 
 $selectorX  = $_POST['selectorX'] - $_POST['imageX'];
