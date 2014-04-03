@@ -20,7 +20,7 @@ window.onload=function() {
 
             // 创建图像节点，显示loading状态
             var server_img = document.createElement('img');
-            server_img.setAttribute('src', '../spinner.gif');
+            server_img.setAttribute('src', './spinner.gif');
             server_img.setAttribute('id', 'image_to_crop');
             document.getElementById('editable').appendChild(server_img);
 

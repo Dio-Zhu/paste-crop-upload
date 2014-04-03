@@ -10,10 +10,12 @@
  *  error handle
  */
 
+require('./config.php');
+
 // configs
-$_cfg_tmp_dir       = '../tmp/';        // 临时截图存储目录
-$_cfg_store_dir     = '../final/';      // 最终截图存储目录
-$_cfg_file_prefix   = '';               // 'test_';          // 截图文件名前缀
+$_cfg_tmp_dir       = $_cfg_tmp_file_path;        // 临时截图存储目录
+$_cfg_store_dir     = $_cfg_final_file_path;      // 最终截图存储目录
+$_cfg_file_prefix   = '';                           // 'test_'; // 截图文件名前缀
 
 $src_file_path  = $_POST['imageSource'];
 if ( !file_exists($src_file_path ) ) {

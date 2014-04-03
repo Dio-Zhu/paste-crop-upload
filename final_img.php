@@ -10,6 +10,8 @@
  *  optimize logic
  */
 
+require('./config.php');
+
 
 // var_dump($_POST);
 // analyse post data
@@ -18,11 +20,10 @@ if ( 0 >= count($_POST) ) {
 }
 
 // move final iamges to a proper place
-// todo: config dirs
 $count = 0;
 foreach ( $_POST as $id => $src ) {
-    $src_file   = '../tmp/'. basename($src);
-    $dst_file   = '../final/'. basename($src);
+    $src_file   = $_cfg_tmp_file_path. basename($src);
+    $dst_file   = $_cfg_final_file_path. basename($src);
     copy($src_file, $dst_file);
     $count++;
 }
@@ -34,13 +35,7 @@ output_json_ok($count);
 
 /* base functions */
 function output_json_ok($Count) {
-    $return_data = array(
-        'status'    => 0,
-        'count'     => $Count,
-        'msg'       => 'ok',
-    );
-    echo json_encode($return_data);
-    exit();
+    output_json_error(0, $Count, 'OK');
 }
 
 function output_json_error($Status, $Count, $Msg) {
